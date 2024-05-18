@@ -1,3 +1,8 @@
+#SettingsPanel{
+    width: 100%;
+    
+}
+
 #SettingsTitleBar {
     display: flex;
     flex-direction: row;
@@ -10,6 +15,14 @@
 }
 
 #BackButton {
+    cursor: pointer;
     position: absolute;
+    height: 100%;
+    width: 60px;
     left: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid black;
 }

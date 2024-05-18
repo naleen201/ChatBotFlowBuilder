@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React, { Children, useEffect } from 'react'
 import MessageNodeSettings from './MessageNodeSettings/MessageNodeSettings'
 
 import './NodeSettings.css'
@@ -18,11 +18,12 @@ function NodeSettings({node, hideSettings, onUpdate}) {
         default:
             NodeSetting = DefaultNodeSettings;
     }
+
     return (
         <div id='SettingsPanel'>
             <div id='SettingsTitleBar'>
                 <div id='BackButton' onClick={hideSettings}>Back</div>
-                <div id='SettingsTitle'>{node.nodeName} Node</div>
+                <div id='SettingsTitle'>{node.data.nodeName} Node</div>
             </div>
             <div>
                 {NodeSetting}

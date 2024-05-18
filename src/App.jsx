@@ -26,7 +26,7 @@ function App() {
         <div id='AppContainer'>
             <NavBar />
             <div id='BuilderContainer'>
-                <FlowBuilder showSettings={showSettings} update={update}/>
+                <FlowBuilder showSettings={showSettings} update={update} onUpdate={()=>setUpdate(!update)}/>
                 <SidePanel>{isSettingsVisible ? <NodeSettings node={node} hideSettings={hideSettings} onUpdate={()=>setUpdate(!update)}/> : <NodeMenu />}</SidePanel>
             </div>
         </div>

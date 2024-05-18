@@ -15,7 +15,7 @@ const nodeTypes = {
 let id = -1;
 const getId = () => `dndnode_${++id}`;
 
-function FlowBuilder({ showSettings, update }) {
+function FlowBuilder({ showSettings, update, onUpdate }) {
 
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -69,7 +69,7 @@ function FlowBuilder({ showSettings, update }) {
                 nodeTypes={nodeTypes}
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
-                onNodeClick={(event, node) => showSettings(node)}
+                onNodeClick={(event, node) => {onUpdate(); showSettings(node);}}
             >
                 <Background />
                 <Controls />

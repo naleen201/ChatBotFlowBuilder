@@ -7,7 +7,6 @@ function SidePanel({children}) {
                 flex: '1',
                 borderLeft: '1px solid #333',
                 height: '100%',
-                width: '100%',
             }
         }>
             {children}

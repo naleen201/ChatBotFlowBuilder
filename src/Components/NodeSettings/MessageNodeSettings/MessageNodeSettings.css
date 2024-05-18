@@ -1,3 +1,22 @@
+#MessageEditForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+#MessageEditForm textarea {
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
 #submit {
     padding: 8px 30px;
     background-color: aqua;
