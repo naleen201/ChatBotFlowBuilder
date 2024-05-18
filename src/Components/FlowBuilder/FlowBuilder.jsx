@@ -90,7 +90,6 @@ function FlowBuilder({ showSettings, update, onUpdate, setRfInstance}) {
     );
 
     useEffect(() => {
-        console.log('update')
     }, [update])
     useEffect(() => {
         onRestore();

@@ -5,7 +5,6 @@ import './MenuItem.css'
 function MenuItem({children, nodeType, nodeData}) {
     const handleDragStart = (event,nodeType,nodeData) => {
         const data = {...nodeData};
-        console.log(data);
         const type = nodeType;
         event.dataTransfer.setData('application/reactflow-nodeData', JSON.stringify(data));
         event.dataTransfer.setData('application/reactflow-nodeType', type);

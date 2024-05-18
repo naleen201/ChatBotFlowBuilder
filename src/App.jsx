@@ -6,6 +6,8 @@ import FlowBuilder from './Components/FlowBuilder/FlowBuilder'
 import NodeMenu from './Components/NodeMenu/NodeMenu'
 import NodeSettings from './Components/NodeSettings/NodeSettings'
 import SidePanel from './Components/SidePanel/SidePanel'
+import ErrorToast from './Components/Toast/ErrorToast'
+import SuccessToast from './Components/Toast/SuccessToast'
 
 import { ReactFlowProvider } from 'reactflow'
 
@@ -14,13 +16,15 @@ function App() {
     const [node, setNode] = useState(null);
     const [update, setUpdate] = useState(false);
     const [rfInstance, setRfInstance] = useState(null);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
 
     const onSave = useCallback(() => {
         if (rfInstance) {
             const flow = rfInstance.toObject();
             //Error if there is a node that is not a source or target of an edge
             if (flow.nodes.length > 1 && flow.nodes.some(node => !flow.edges.some(edge => edge.source === node.id || edge.target === node.id))) {
-                alert('Error: At least one node is not connected to an edge');
+                setError(new Error('Error: At least one node is not connected from an edge'));
                 return;
             }
             
@@ -30,11 +34,13 @@ function App() {
             });
             localStorage.setItem('chatbot-flow', JSON.stringify(flow));
             localStorage.setItem('id', flow.nodes.length);
+
+            setSuccess({message: 'Flow saved successfully!'});
+            setError(null);
         }
     }, [rfInstance]);
 
     const showSettings = (node) => {
-        console.log(node);
         setNode(node);
         setIsSettingsVisible(true);
     };
@@ -46,6 +52,8 @@ function App() {
 
     return (
         <div id='AppContainer'>
+            {error && <ErrorToast error={error}/>}
+            {success && <SuccessToast success={success}/>}
             <NavBar onSave={onSave}/>
             <div id='BuilderContainer'>
                 <ReactFlowProvider><FlowBuilder showSettings={showSettings} update={update} onUpdate={()=>setUpdate(!update)} setRfInstance={setRfInstance}/></ReactFlowProvider>
