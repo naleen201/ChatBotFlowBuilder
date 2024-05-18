@@ -109,7 +109,7 @@ function FlowBuilder({ showSettings, update, onUpdate, setRfInstance}) {
                 edgeTypes={edgeTypes}
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
-                onNodeClick={(event, node) => { onUpdate(); showSettings(node); }}
+                onNodeClick={(event, node) => { node.selected=true; onUpdate(); showSettings(node); }}
                 onInit={setRfInstance}
             >
                 <Background />

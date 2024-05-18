@@ -4,9 +4,9 @@ import 'reactflow/dist/style.css';
 import './MessageNode.css'
 
 
-function MessageNode({data}) {
+function MessageNode({data, selected}) {
     return (
-        <div id='NodeContainer'>
+        <div id='NodeContainer' style={selected ? {border: '1px solid black'} : {}}>
             <Handle type="target" position={Position.Left} style={{ background: '#555' }} />
             <div id='NodeContentContainer'>
                 <div id='NodeTitle'>Send Message</div>
