@@ -1,0 +1,13 @@
+#SidePanelContainer {
+    width: 350px;
+    border-left: 1px solid #333;
+    height: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+    #SidePanelContainer {
+        width: 100%;
+        height: 350px;
+        border-top: 1px solid #333;
+    }
+}

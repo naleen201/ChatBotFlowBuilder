@@ -1,6 +1,5 @@
 #SettingsPanel{
     width: 100%;
-    
 }
 
 #SettingsTitleBar {
@@ -24,5 +23,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: 1px solid black;
+}
+
+#EditForm {
+    border-bottom: 1px solid black;
 }

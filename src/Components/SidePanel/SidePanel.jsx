@@ -1,14 +1,9 @@
 import React from 'react'
+import './SidePanel.css'
 
 function SidePanel({children}) {
     return (
-        <div id='SidePanelContainer' style={
-            {
-                flex: '1',
-                borderLeft: '1px solid #333',
-                height: '100%',
-            }
-        }>
+        <div id='SidePanelContainer'>
             {children}
         </div>
     )

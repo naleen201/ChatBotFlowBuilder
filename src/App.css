@@ -10,3 +10,20 @@
     width: 100%;
     height: 100%;
 }
+
+@media only screen and (max-width: 800px) {
+    #BuilderContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    #AppContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+    }
+}

@@ -3,7 +3,11 @@
     height: 100%;
 }
 #MenuButton{
+    cursor: pointer;
     background-color: #f1f1f1;
+    border: 2px solid #6d3fd1;
+    color: #6d3fd1;
+    font-weight: 600;
     border-radius: 10px;
     height: 100%;
     width: 100%;

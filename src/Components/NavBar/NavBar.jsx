@@ -1,11 +1,11 @@
 import React from 'react'
 import './NavBar.css'
 
-function Navbar() {
+function Navbar({onSave}) {
   return (
     <div id='NavBarContainer'>
         <p>ChatBot Flow Builder</p>
-        <button id='SaveButton'>Save</button>
+        <button id='SaveButton' onClick={onSave}>Save</button>
     </div>
   )
 }
