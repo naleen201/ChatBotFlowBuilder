@@ -1,0 +1,22 @@
+#NavBarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #333;
+  color: white;
+  height: 60px;
+}
+
+#SaveButton {
+    padding: 8px 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: aqua;
+    transition: background-color 0.3s;
+}
+
+#SaveButton:hover {
+    background-color: #2cdada;
+
+}

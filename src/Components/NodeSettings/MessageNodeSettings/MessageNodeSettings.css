@@ -1,0 +1,9 @@
+#submit {
+    padding: 8px 30px;
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+#submit:hover {
+    background-color: #2cdada;
+}
