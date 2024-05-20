@@ -7,8 +7,6 @@ function NodeMenu() {
   return (
         <div id='NodeMenuGrid'>
             <Message />
-            <Message />
-            <Message />
         </div>
   )
 }
