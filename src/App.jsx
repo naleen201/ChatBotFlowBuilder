@@ -10,6 +10,7 @@ import ErrorToast from './Components/Toast/ErrorToast'
 import SuccessToast from './Components/Toast/SuccessToast'
 
 import { ReactFlowProvider } from 'reactflow'
+import { useNodesState, useEdgesState } from 'reactflow';
 
 function App() {
     const [isSettingsVisible, setIsSettingsVisible] = useState(false);
@@ -18,6 +19,9 @@ function App() {
     const [rfInstance, setRfInstance] = useState(null);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    
+    const [nodes, setNodes, onNodesChange] = useNodesState([]);
+    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
     const onSave = useCallback(() => {
         if (rfInstance) {
@@ -40,6 +44,11 @@ function App() {
         }
     }, [rfInstance]);
 
+    const onDelete = useCallback((toBeDeleted) => {
+        setNodes((nds) => nds.filter(node => node.id !== toBeDeleted.id));
+        setEdges((eds) => eds.filter(edge => edge.source !== toBeDeleted.id && edge.target !== toBeDeleted.id));
+    });
+
     const showSettings = (node) => {
         setNode(node);
         setIsSettingsVisible(true);
@@ -56,8 +65,8 @@ function App() {
             {success && <SuccessToast success={success}/>}
             <NavBar onSave={onSave}/>
             <div id='BuilderContainer'>
-                <ReactFlowProvider><FlowBuilder showSettings={showSettings} update={update} onUpdate={()=>setUpdate(!update)} setRfInstance={setRfInstance}/></ReactFlowProvider>
-                <SidePanel>{isSettingsVisible ? <NodeSettings node={node} hideSettings={hideSettings} onUpdate={()=>setUpdate(!update)}/> : <NodeMenu />}</SidePanel>
+                <ReactFlowProvider><FlowBuilder nodes={nodes} setNodes={setNodes} onNodesChange={onNodesChange} edges={edges} setEdges={setEdges} onEdgesChange={onEdgesChange} showSettings={showSettings} update={update} onUpdate={()=>setUpdate(!update)} rfInstance={rfInstance} setRfInstance={setRfInstance}/></ReactFlowProvider>
+                <SidePanel>{isSettingsVisible ? <NodeSettings onDelete={onDelete} node={node} hideSettings={hideSettings} onUpdate={()=>setUpdate(!update)}/> : <NodeMenu />}</SidePanel>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import './FlowBuilder.css'
-import ReactFlow, { Background, Controls, useNodesState, useEdgesState, addEdge, MarkerType, useReactFlow } from 'reactflow';
+import ReactFlow, { Background, Controls, useNodesState, useEdgesState, addEdge, MarkerType, useReactFlow, MiniMap } from 'reactflow';
 
 import 'reactflow/dist/style.css';
 
@@ -21,10 +21,11 @@ const nodeTypes = {
 let id = -1;
 const getId = () => `dndnode_${++id}`;
 
-function FlowBuilder({ showSettings, update, onUpdate, setRfInstance}) {
+function FlowBuilder({nodes, setNodes, onNodesChange, edges, setEdges, onEdgesChange, showSettings, update, onUpdate, rfInstance, setRfInstance}) {
 
-    const [nodes, setNodes, onNodesChange] = useNodesState([]);
-    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+    //const [nodes, setNodes, onNodesChange] = useNodesState([]);
+    //const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+    //const [reactFlowInstance, setReactFlowfInstance] = useState(null);
 
     const { setViewport } = useReactFlow();
 
@@ -43,6 +44,8 @@ function FlowBuilder({ showSettings, update, onUpdate, setRfInstance}) {
 
         restoreFlow();
     }, [setNodes, setViewport]);
+
+    
 
     const onConnect = useCallback(
         (params) => {
@@ -75,10 +78,10 @@ function FlowBuilder({ showSettings, update, onUpdate, setRfInstance}) {
             if (typeof type === 'undefined' || !type) {
                 return;
             }
-            const position = {
+            const position = rfInstance.screenToFlowPosition({
                 x: event.clientX,
                 y: event.clientY,
-            };
+              });
             const newNode = {
                 id: getId(),
                 type,
@@ -113,6 +116,7 @@ function FlowBuilder({ showSettings, update, onUpdate, setRfInstance}) {
             >
                 <Background />
                 <Controls />
+                <MiniMap style={{border: '1px solid black', borderRadius: '10px'}}/>
             </ReactFlow>
         </div>
     )

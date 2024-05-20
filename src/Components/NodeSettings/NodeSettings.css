@@ -11,20 +11,42 @@
     width: 100%;
     height: 50px;
     border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #BackButton {
     cursor: pointer;
-    position: absolute;
     height: 100%;
     width: 60px;
-    left: 0;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
+}
+
+#BackButton:hover {
+    background-color: #f1f1f1;
 }
 
 #EditForm {
     border-bottom: 1px solid black;
+}
+
+#DeleteButton{
+    cursor: pointer;
+    height: 100%;
+    width: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+#DeleteButton:hover {
+    background-color: #f1f1f1;
+    color: rgb(255, 0, 0);
 }
