@@ -10,13 +10,14 @@
 
 #SaveButton {
     padding: 8px 40px;
-    border: none;
+    background-color: #f1f1f1;
+    border: 2px solid #6d3fd1;
     border-radius: 10px;
-    background-color: aqua;
+    color: #6d3fd1;
     transition: background-color 0.3s;
 }
 
 #SaveButton:hover {
-    background-color: #2cdada;
+    background-color: #B9B9B9;
 
 }
