@@ -1,4 +1,5 @@
 #ErrorToastContainer {
+    z-index: 100;
     position: fixed;
     margin-top: 10px;
     top: 0;
